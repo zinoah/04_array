@@ -278,6 +278,117 @@ public class ArrayExample1 {
 		}
 	}
 	
+	public void ex8() {
+		// 1. 문자열을 입력 받아 한 글자씩 잘라내어 char 배열에 순서대로 저장
+		// 2. 문자 하나를 입력 받아 일치하는문자가 char 배열에 몇개 존재하는지 확인 
+		// 3. 단, 일치하는 문자가 없을 경우 "존재하지 않습니다" 출력
+		
+		//[사용 해야되는 기술, 기능]
+		// 1) 배열 검색
+		// 2) String.length() : 문자열의 길이
+		// 		ex) "Hello",length() -> 5
+		
+		// 3) String.charAt(index) : 문자열에서 특정 index에 위치한 문자 하나를 얻어옴.
+		// 		ex) "Hello".charAt(1) -> 'e'
+		//            01234
+		
+		// 4) count (숫자 세기)
+		
+
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("문자열 입력 : ");
+		String input = sc.nextLine();
 	
+		// 1. 문자열을 입력 받아 한 글자씩 잘라내어 char 배열에 순서대로 저장
+		char[] tex = new char[input.length()]; //공간 생성
+		
+		
+		for(int i = 0; i < tex.length; i++ ) {
+			
+			tex[i] = input.charAt(i);
+			
+		}
+		//중간확인과정
+		//System.out.println(Arrays.toString(tex));
+
+		// 2. 문자 하나를 입력 받아 일치하는문자가 char 배열에 몇개 존재하는지 확인 
+		System.out.print("검색할 문자 입력 : ");
+		
+		char ch = sc.nextLine().charAt(0);
+									//String.charAt(0) : 문자열 제일 앞 문자
+		
+		int count = 0;// 같은 글자 개수 세기 위한 변수
+		
+		for(int i = 0; i < tex.length; i++) {
+			if(ch == tex[i]) {
+				
+				count++;
+				
+			}		
+		}
+		if(count > 0){
+			System.out.println(count + "개 있음");
+		}else {
+			System.out.println("존재하지 않음");
+		}
+		
+	}
+	public void createLottoNumber() {
+		//로또번호 생성기
+		//[6, 12, 16, 20, 21, 42]
+		
+		//1. 1 ~ 45 사이 중복되지 않는 난수 6개 생성 => math.random()
+		//2. 생성된 난수가 오름차순으로 정렬 => Arrays.sort()
+		
+		//1) 정수 6개를 저장할 배열 선엉 및 할당
+		
+		int[] lotto = new int[6];
+		
+		//2) 생성된 배열을 처음부터 끝까지 순차 접근하는 for 문 작성
+		
+		for(int i = 0; i < lotto.length; i++) {
+			
+			//3) i~ 45 사이의 난수생성
+			int random = (int)(Math.random()*45 + 1);
+							// 0.0 <= x < 1.0
+							// 0.0 <= x * 45 < 45.0
+							// 1.0 <= x * 45 + 1 < 46.0
+							// 1 <= (int)(x * 45 + 1 ) < 46
+			
+			//4) 생성된 난수를 순서대로 배열 요소에 대입
+			lotto[i] = random;
+			
+			//5) 중복 검사를 위한 for문 작성
+			for(int x = 0; x < i; x++) {
+				
+				// 6) 현재 생성된 난수와 같은 수가
+				//	앞쪽 index(요소)에 있는지 검사
+				if(random == lotto[x]) {
+					
+					i--;
+					//i가 1씩 증가할 때 마다 난수가 하나생성
+					// -> 중복 값이 있으므로 난수를 새로 하나 더 생성해야함
+					// -- i는 기본적으로 0~5까지 6회 반복되지만
+					// 		i값을 인위적으로 1감소시켜서 7회 반복되는 모양을 만듦.
+					break;
+					//앞쪽에서 중복 데이터를 발견하면
+					//남은 값을 비교할 필요 없음
+					// -> 효율 향상을 위해서 검사하는 for문을 종료
+				}
+			}
+		}//for문 끝
+		
+		// 7) 오름차순 정렬
+		// - > 선택, 삽입, 버블, 퀵 등등
+		// --> 자바가 정렬 방법을 미리 만들어서 제공하고 있음
+		//	 	Arrays.sort(배열명): 배열 내 값들이 오름차순으로 정렬됨
+		// 시간복잡도, 효율~! 공부하세요~!
+		
+		Arrays.sort(lotto);
+		
+		//결과 출력
+		System.out.println(Arrays.toString(lotto));
+	}
 }
 
