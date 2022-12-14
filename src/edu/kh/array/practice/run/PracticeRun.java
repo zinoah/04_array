@@ -16,8 +16,8 @@ public class PracticeRun {
 		//arrEx.practice8();
 		//arrEx.practice9();
 		//arrEx.practice10();
-		arrEx.practice11();
-		//arrEx.practice12();
+		//arrEx.practice11();
+		arrEx.practice12();
 		//arrEx.practice13();
 		//arrEx.practice14();
 	}

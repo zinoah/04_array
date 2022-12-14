@@ -14,19 +14,20 @@ public class PracticeService {
 		//짝수 번째 인덱스 합 : 20
 		
 		int[] arr = new int[9];
+		
 		int sum = 0;
+				
 		for(int i = 0; i < arr.length; i++) {
+			arr[i] = i + 1;
 			
-			arr[i] = i+1;
-			
-			System.out.print( arr[i] + " ");
-			if(0 == arr[i] % 2) {
-				sum += arr[i] ;
+			if(arr[i] % 2 == 0) {
+				sum += arr[i];
 			}
+			
+			System.out.print(arr[i] +" ");
 		}
 		System.out.println();
 		System.out.println("짝수 번째 인덱스 합 : " + sum);
-		
 	}
 	
 	public void practice2(){
@@ -38,12 +39,21 @@ public class PracticeService {
 		//9 8 7 6 5 4 3 2 1
 		//홀수 번째 인덱스 합 : 20
 		
-		int arr[] = new int[9];
+		int[] arr = new int[9];
 		
-		for( int i = 0 ; i < arr.length; i++) {
-			arr[i] = arr.length - 1;
-			System.out.println(i + ' ');
+		int sum = 0;
+		
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = (arr.length - i);
+			
+			System.out.print(arr[i] + " ");
+			
+			if(1 == arr[i] % 2) {
+				sum += arr[i];
+			}
 		}
+		System.out.println();
+		System.out.println("홀수 번째 인데스 합 : " + sum);
 	}
 	
 	public void practice3(){
@@ -58,13 +68,18 @@ public class PracticeService {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("양의 정수 :");
+		
 		int input = sc.nextInt();
+		
 		int[] arr = new int[input];
 		
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = i + 1;
-			System.out.print( arr[i] + " ");
+		for(int i = 0 ; i < arr.length; i++) {
+			arr[i] = (i + 1) ;
+			
+			System.out.print(arr[i] + " ");
 		}
+		
+		
 	}
 	
 	public void practice4(){
@@ -90,31 +105,35 @@ public class PracticeService {
 		//검색할 값 : 1
 		//일치하는 값이 존재하지 않습니다.
 		
-		int arr[] = new int[5];
-		
 		Scanner sc = new Scanner(System.in);
 		
-		
-		
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print("입력 " +  i + ": ");
+		int[] arr = new int[5]; 
+		for(int i = 0 ; i < arr.length; i++) {
+			
+			System.out.printf("입력 %d : ", i );
+			
 			int num = sc.nextInt();
+			
 			arr[i] = num;
 		}
-		System.out.print("검색할 값 : ");
+		
+		System.out.print("검색할 값 :");
 		int input = sc.nextInt();
 		
-		boolean flag = false;
+		boolean flag = true;
+		
 		
 		for(int i = 0; i < arr.length; i++) {
+			
 			if(input == arr[i]) {
-				System.out.print("인덱스 : " + i);
-				flag = true;
+				
+				System.out.println("인덱스 : " + i);
+				
+				flag = false;
 			}
 		}
-		if(!flag){
+		if(flag) {
 			System.out.println("일치하는 값이 존재하지 않습니다.");
-			
 		}
 	}
 	
@@ -129,29 +148,31 @@ public class PracticeService {
 		//i 개수 : 2
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("문자열 : ");
+		
 		String str = sc.nextLine();
 		
 		char[] arr = new char[str.length()];
 		
-		for(int i = 1 ; i < arr.length; i++) {
-			arr[i] = str.charAt(i);
-		}
-		System.out.print("문자 :");
-		char chr = sc.next().charAt(0);
+		System.out.print("문자 : ");
 		
-		System.out.print(str + "에 " + chr + "가 존재하는 위치(인덱스) : ");
+		char ch = sc.next().charAt(0);
+		
 		int count = 0;
-		for(int i = 1; i < arr.length; i++) {
-			if(chr == arr[i]) {
-				count++;
+		
+		System.out.printf("%s에 %c가 존재하는 위치(인덱스) : " , str, ch );
+		
+		for(int i = 0; i < arr.length; i++) {
+			
+			arr[i] = str.charAt(i);
+			
+			if(arr[i] == ch) {
 				System.out.print(i + " ");
+				count++;
 			}
 		}
-		System.out.println();
-		System.out.println(chr +"의 개수 : " + count);
-		
-		
+		System.out.printf("\n%c 의 개수 : %d" , ch , count);
 	}
 	
 	public void practice6(){
@@ -170,18 +191,26 @@ public class PracticeService {
 		//총 합 : 2
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("정수 : ");
+		
 		int input = sc.nextInt();
-		int[] arr = new int[input];
-		int sum = 0;
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print("배열 " + i +"번째 인덱스에 넣을 값 : ");
+		
+		int arr[] = new int[input];
+		
+		for(int i = 0 ; i < arr.length ; i++) {
+			System.out.printf(" 배열 %d번째 인덱스에 넣을 값 : "  , i);
 			int num = sc.nextInt();
+			
 			arr[i] = num;
+		}
+		int sum = 0;
+				
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print( arr[i] + " ");
 			sum += arr[i];
 		}
-		System.out.println(Arrays.toString(arr));
-		System.out.println("총 합 : " + sum);
+		System.out.println("\n총합 : " + sum);
 		
 	}
 	
@@ -191,22 +220,24 @@ public class PracticeService {
 		//[실행 화면]
 		//주민등록번호(-포함) : 123456-1234567
 		//123456-1******
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("주민등록번호(-포함) : ");
-		String idNum = sc.nextLine();
+		String str = sc.nextLine();
 		
-		char[] arr = new char[idNum.length()];
-		
-		for(int i = 0; i < arr.length; i++) {
+		char[] arr = new char[str.length()];
+		char star = '*';
+		for(int i = 0; i < arr.length; i++){
 			
-			arr[i] = idNum.charAt(i);
-			
-			if(i < 8) {
-				System.out.print(arr[i]);
+			if(i <8) {
+				arr[i] = str.charAt(i);
 			}else {
-				System.out.print("*");
+				arr[i] = star;
 			}
+			
+			System.out.print(arr[i]);
 		}
+		
 	}
 	
 	public void practice8(){
@@ -241,14 +272,15 @@ public class PracticeService {
 		//[실행 화면]
 		//발생한 난수 : 9 7 6 2 5 10 7 2 9 6
 		
-		int[] arr = new int[10];
+		int arr[] = new int[10];
 		
 		for(int i = 0; i < arr.length; i++) {
-			int random = (int)(Math.random()*10 + 1);
-			arr[i] = random;
+			arr[i] = (int)(Math.random() * 10 + 1 );
 		}
-		System.out.println(Arrays.toString(arr));
-		
+		System.out.print("발생한 난수 : ");
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
 	}
 	
 	public void practice10(){
@@ -262,18 +294,27 @@ public class PracticeService {
 		//최소값 : 2
 		
 		int[] arr = new int[10];
+		
+		System.out.print("발생한 난수 : ");
+		
+		for(int i = 0 ; i < arr.length; i++) {
+			arr[i] = (int)(Math.random() * 10 + 1);
+			System.out.print(arr[i] + " ");
+		}
+		
 		int max = 0;
 		int min = 10;
+		
 		for(int i = 0; i < arr.length; i++) {
-			int random = (int)(Math.random()*10 + 1);
-			arr[i] = random;
+			
 			if(arr[i] > max) {
 				max = arr[i];
-			}else if(arr[i] < min){
-				min = arr[i] ;
+			}
+			if(arr[i] < min) {
+				min = arr[i];
 			}
 		}
-		System.out.println("발생한 난수 : " + Arrays.toString(arr));
+		System.out.println();
 		System.out.println("최대값 : " + max);
 		System.out.println("최소값 : " + min);
 	}
@@ -285,25 +326,26 @@ public class PracticeService {
 		//[실행 화면]
 		//4 1 3 6 9 5 8 10 7 2
 		
-		int[] num = new int[10];
+		int[] arr = new int[10];
 		
-		for(int i = 0; i < num.length; i++) {
-			int random = (int)(Math.random() * 10 +1);
-			num[i] = random;
+		for(int i = 0; i < arr.length; i++) {
 			
-				for(int x = 0; x < i; x++) {
+			arr[i] = (int)(Math.random() * 10 +1);
+			
+			for(int i2 = 0; i2 < i; i2++) {
 				
-					if(random == num[x]) {
-						
-						i--;
+				if(arr[i2] == arr[i]) {
 					
-						break;
-					}
+					i--;
+					
+					break;
 				}
-			
+			}
 		}
-		
-		System.out.println(Arrays.toString(num));
+		for(int i = 0; i < arr.length; i++) {
+			
+			System.out.print(arr[i] + " ");
+		}
 	}
 	
 	public void practice12(){
@@ -314,6 +356,13 @@ public class PracticeService {
 		//[실행 화면]
 		//3 4 15 17 28 40
 		
+		int[] arr = new int[6];
+		
+		for(int i = 0; i <arr.length; i++) {
+			int random = (int)(Math.random() * 45 + 1);
+			
+			arr[i] = random;
+		}
 		
 	}
 	
